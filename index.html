@@ -12,66 +12,82 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     body {
-      background-color: #121212;
+      background: #121212;
       color: #ffffff;
       line-height: 1.6;
+      font-size: 16px;
+      overflow-x: hidden;
     }
     nav {
-      background-color: #1f1f1f;
-      padding: 10px 20px;
+      background-color: rgba(31, 31, 31, 0.9);
+      padding: 15px 30px;
       position: sticky;
       top: 0;
       z-index: 1000;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 5px rgba(0, 255, 213, 0.2);
-      flex-wrap: wrap;
+      box-shadow: 0 5px 15px rgba(0, 255, 213, 0.2);
+      backdrop-filter: blur(10px);
+      transition: background-color 0.3s ease;
+    }
+    nav:hover {
+      background-color: rgba(0, 255, 213, 0.8);
     }
     nav h1 {
-      font-size: 20px;
+      font-size: 26px;
       color: #00ffd5;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
     nav ul {
       list-style: none;
       display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
+      gap: 20px;
     }
     nav ul li a {
       color: #fff;
       text-decoration: none;
-      transition: color 0.3s;
+      font-weight: bold;
+      transition: color 0.3s ease, transform 0.2s ease;
     }
     nav ul li a:hover {
       color: #00ffd5;
+      transform: translateY(-3px);
     }
     header, section {
-      padding: 40px 20px;
-      max-width: 1000px;
+      padding: 50px 20px;
+      max-width: 1200px;
       margin: auto;
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+    }
+    header {
+      background: linear-gradient(135deg, rgba(0, 255, 213, 0.3), rgba(0, 255, 213, 0.1)), url('background.jpg') no-repeat center center/cover;
+      color: #fff;
+      text-align: center;
+      border-bottom: 5px solid #00ffd5;
+      box-shadow: 0 5px 20px rgba(0, 255, 213, 0.2);
     }
     h1, h2 {
       color: #00ffd5;
+      font-size: 2.5em;
+      margin-bottom: 20px;
     }
     .contact-info, .skills, .languages, .interests {
       margin: 20px 0;
     }
-    ul {
-      list-style-type: none;
-      padding-left: 0;
-    }
-    .section-title {
-      border-bottom: 2px solid #00ffd5;
-      padding-bottom: 10px;
-      margin-bottom: 20px;
-    }
     .card {
       background: #1e1e1e;
       padding: 20px;
-      border-radius: 10px;
+      border-radius: 12px;
       margin-bottom: 20px;
-      box-shadow: 0 0 10px rgba(0,255,213,0.1);
+      box-shadow: 0 0 15px rgba(0, 255, 213, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(0, 255, 213, 0.2);
     }
     a {
       color: #00ffd5;
@@ -82,6 +98,8 @@
       padding: 20px;
       font-size: 14px;
       color: #aaa;
+      background-color: #1e1e1e;
+      border-top: 5px solid #00ffd5;
     }
     .profile-img {
       width: 150px;
@@ -89,13 +107,60 @@
       border-radius: 50%;
       object-fit: cover;
       margin: 20px 0;
-      border: 4px solid #00ffd5;
+      border: 5px solid #00ffd5;
+      transition: transform 0.3s ease, border 0.3s ease;
     }
-    @media (max-width: 600px) {
+    .profile-img:hover {
+      transform: scale(1.1);
+      border-color: #fff;
+    }
+    .skills p {
+      margin-bottom: 10px;
+    }
+    .skills p span {
+      display: inline-block;
+      padding: 10px;
+      background-color: #333;
+      border-radius: 5px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      transition: background-color 0.3s;
+    }
+    .skills p span:hover {
+      background-color: #00ffd5;
+    }
+
+    /* Fade-in effect for sections */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Smooth scrolling effect */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Media Queries */
+    @media (max-width: 768px) {
       nav ul {
         flex-direction: column;
         gap: 10px;
         align-items: flex-start;
+      }
+      header {
+        text-align: center;
+      }
+      h1 {
+        font-size: 2em;
+      }
+      .profile-img {
+        width: 120px;
+        height: 120px;
       }
     }
   </style>
@@ -115,7 +180,7 @@
   <header id="about">
     <img src="profile.png" alt="Rajesh Devaguptapu" class="profile-img" onerror="this.style.display='none';">
     <h1>Rajesh Devaguptapu</h1>
-    <p>The results I deliver are exceptional due to my creativity and determination.</p>
+    <p>I'm a passionate Data Scientist with a strong foundation in coding and AI technologies. My creativity and determination lead me to deliver exceptional results in every project I undertake.</p>
     <div class="contact-info">
       <p>Email: <a href="mailto:rajeshdevaguptapu5479@gmail.com">rajeshdevaguptapu5479@gmail.com</a></p>
       <p>Phone: <a href="tel:+919390471507">+91 93904 71507</a></p>
@@ -132,14 +197,8 @@
       Information Technology - CGPA: 6.78
     </div>
     <div class="card">
-      <strong>Intermediate</strong><br>
-      Tirumala Junior College (2017 - 2019)<br>
-      M.P.C - CGPA: 8.92
-    </div>
-    <div class="card">
-      <strong>Matriculation</strong><br>
-      Narayana (EM) High School (2016 - 2017)<br>
-      Secondary Education - CGPA: 8.2
+      <strong>Masters in Computer Science</strong><br>
+      University of South Dakota<br>
     </div>
   </section>
 
@@ -158,7 +217,7 @@
   <section id="skills">
     <h2 class="section-title">Skills</h2>
     <div class="skills">
-      <p>C, Python, Java, HTML, Artificial Intelligence (ML, DL), MySQL, AWS</p>
+      <p><span>C</span><span>Python</span><span>Java</span><span>HTML</span><span>AI (ML, DL)</span><span>MySQL</span><span>AWS</span></p>
     </div>
   </section>
 
@@ -166,31 +225,13 @@
     <h2 class="section-title">Projects</h2>
     <div class="card">Handwritten Digit Recognition using Machine Learning</div>
     <div class="card">Cybersecurity Breach Analysis Using Machine Learning</div>
+    <div class="card">Sentiment Analysis of Movie Reviews</div>
   </section>
 
   <section id="certificates">
     <h2 class="section-title">Certificates</h2>
     <div class="card">Certified Data Scientist from DataMites (2023)</div>
     <div class="card">Cisco: Introduction to Cyber Security & Essentials (2022)</div>
-  </section>
-
-  <section id="activities">
-    <h2 class="section-title">Extra-Curricular Activities</h2>
-    <ul>
-      <li>Part of EPROZYNE 2021 at Pragati Engineering College</li>
-      <li>Kabaddi Winner - Pragati Premium League (2022-2023)</li>
-      <li>Volunteered at a college Blood Camp (2022-2023)</li>
-    </ul>
-  </section>
-
-  <section id="languages">
-    <h2 class="section-title">Languages</h2>
-    <p>Telugu (Native), English (Full Professional), Hindi (Professional)</p>
-  </section>
-
-  <section id="hobbies">
-    <h2 class="section-title">Hobbies</h2>
-    <p>Learning Languages, Volunteering, Photography, Sports & Fitness, Travelling, Aquascaping, Music, Cooking</p>
   </section>
 
   <section id="contact">
